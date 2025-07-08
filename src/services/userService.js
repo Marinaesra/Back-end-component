@@ -38,3 +38,16 @@ exports.doLogin = async (userName, password) => {
 
   return userAux;
 };
+
+exports.createUserInfo = async (newUser) => {
+    const userAux = {
+        id: Math.random().toFixed(5) * 10000,
+        ...newUser
+    }
+
+    users.push({
+        ...userAux
+    })
+
+    return userAux
+}
