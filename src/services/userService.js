@@ -1,0 +1,40 @@
+let users = [
+  {
+    id: 1,
+    name: "Juan Perez",
+    username: "Juanito",
+    email: "juan.perez@example.com",
+    password: "1234",
+    photo: "https://randomuser.me/api/portraits/men/15.jpg",
+  },
+  {
+    id: 2,
+    name: "Maria Lopez",
+    username: "Maria",
+    email: "maria.lopez@example.com",
+    password: "1234",
+    photo: "https://randomuser.me/api/portraits/women/12.jpg",
+  },
+  {
+    id: 3,
+    name: "Carlos Garcia",
+    username: "Carlitos",
+    email: "carlos.garcia@example.com",
+    password: "myPassword789",
+    photo: "https://randomuser.me/api/portraits/men/10.jpg",
+  },
+];
+
+exports.getUserInfo = async (userId) => {
+  const userAux = users.find((u) => u.id == userId);
+
+  return userAux;
+};
+
+exports.doLogin = async (userName, password) => {
+  const userAux = users.find(
+    (u) => u.username == username && u.password == password
+  );
+
+  return userAux;
+};
