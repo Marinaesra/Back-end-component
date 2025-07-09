@@ -31,7 +31,7 @@ exports.getUserInfo = async (userId) => {
   return userAux;
 };
 
-exports.doLogin = async (userName, password) => {
+exports.doLogin = async (username, password) => {
   const userAux = users.find(
     (u) => u.username == username && u.password == password
   );
