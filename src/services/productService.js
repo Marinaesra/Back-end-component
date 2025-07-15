@@ -1,4 +1,4 @@
-const products = [
+let products = [
   {
     id: 1,
     name: "Iso Whey Protein Isolate (ESN)",

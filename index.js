@@ -13,7 +13,7 @@ app.use(cors());
 
 app.use('/healthy', healthyRouter);
 app.use('/', userRouter);
-app.use('/products', productRouter)
+app.use('/products', productRouter);
 
 app.listen(PORT, () => {
   console.log(`Escuchando en el puerto ${PORT}`);
