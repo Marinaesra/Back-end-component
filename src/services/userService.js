@@ -20,7 +20,7 @@ let users = [
     name: "Carlos Garcia",
     username: "Carlitos",
     email: "carlos.garcia@example.com",
-    password: "myPassword789",
+    password: "1234",
     photo: "https://randomuser.me/api/portraits/men/10.jpg",
   },
 ];
