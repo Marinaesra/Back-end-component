@@ -10,7 +10,7 @@ exports.getAllProductsController = async (req, res) => {
 exports.getProductDetailsController = async (req,res) => {
     const productId = req.params.id;
 
-    const resProductsDetails = await getProductDetails(productId)
+    const resProductsDetails = await getProductDetails(productId) 
 
      res.status(200).send({ product: resProductsDetails });
 }
