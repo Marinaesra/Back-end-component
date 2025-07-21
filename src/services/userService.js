@@ -51,3 +51,26 @@ exports.createUserInfo = async (newUser) => {
 
     return userAux
 }
+
+exports.addProductToCart = async (userId, productId) => {
+  const userAux = users.find(u => u.id == userId)
+
+  if (userAux.cart) {
+    userAux.cart.push({
+      productId
+    })
+  } else {
+    userAux.cart = [
+      {
+        productId
+      }
+    ]
+  }
+
+  const userListAux = users.filter(u => u.id != userId)
+  userListAux.push(userAux)
+
+  users = userListAux
+
+  return userAux
+}

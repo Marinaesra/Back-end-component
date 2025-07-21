@@ -1,4 +1,4 @@
-const { getUserInfo, doLogin, createUserInfo } = require("../services/userService");
+const { getUserInfo, doLogin, createUserInfo, addProductToCart } = require("../services/userService");
 
 exports.getUserController = async (req, res) => {
   const userId = req.params.id;
@@ -28,3 +28,12 @@ exports.createUserController = async (req, res) => {
 
   res.status(200).send({ user: resUserInfo });
 };
+
+exports.addProductUserController = async (req, res) => {
+  const userId = req.body.userId
+  const productId = req.body.productId
+
+  const resUserInfo = await addProductToCart(userId, productId)
+
+  res.status(200).send({ user: resUserInfo })
+}
