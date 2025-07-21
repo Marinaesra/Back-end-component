@@ -5,6 +5,8 @@ Buenas Familia
 - Aqui os presentamos nuestro pequeño gran sueño
 Es un proyecto creado desde el corazón con todo nuestro cariño,esperamos que os guste tanto como a nosotros, que percibais el cariño con el que lo hemos creado y que seais participes de nuestro sueño.
 
+-Esencia Activa se basa en lo esencial, lo puro y lo vital.
+
 - Hemos usado para este proyecto las siguientes tencologias: React- Router, React-Redux para nuestra parte del front,
 en la parte del back hemos usado MongoDB y node.js.
 
