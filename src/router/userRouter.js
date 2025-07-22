@@ -10,7 +10,7 @@ const router = express.Router()
 router.get('/:id', getUserController)
 router.post('/', loginUserController)
 router.post('/register', createUserController)
-router.put('/addProduct', addProductUserController)
+router.put('/addProduct/:id', addProductUserController)
 router.post('/modify/:id', modifyUserController)
 
 module.exports = router
