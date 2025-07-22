@@ -74,3 +74,9 @@ exports.addProductToCart = async (userId, productId) => {
 
   return userAux
 }
+
+exports.modifyUser = async(editedUser) => {
+  const userAux = users.filter((u) => u.id != editedUser.id)
+  userAux.push(editedUser)
+  users = userAux
+}

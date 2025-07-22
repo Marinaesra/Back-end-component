@@ -1,4 +1,10 @@
-const { getUserInfo, doLogin, createUserInfo, addProductToCart } = require("../services/userService");
+const {
+  getUserInfo,
+  doLogin,
+  createUserInfo,
+  addProductToCart,
+  modifyUser,
+} = require("../services/userService");
 
 exports.getUserController = async (req, res) => {
   const userId = req.params.id;
@@ -30,10 +36,16 @@ exports.createUserController = async (req, res) => {
 };
 
 exports.addProductUserController = async (req, res) => {
-  const userId = req.body.userId
-  const productId = req.body.productId
+  const userId = req.body.userId;
+  const productId = req.body.productId;
 
-  const resUserInfo = await addProductToCart(userId, productId)
+  const resUserInfo = await addProductToCart(userId, productId);
 
-  res.status(200).send({ user: resUserInfo })
-}
+  res.status(200).send({ user: resUserInfo });
+};
+
+exports.modifyUserController = async (req, res) => {
+  const editedUser = req.body.user;
+  const resUserInfo = await modifyUser(editedUser);
+  res.status(200).send({ user: resUserInfo });
+};
