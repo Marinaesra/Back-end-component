@@ -6,6 +6,7 @@ let users = [
     email: "juan.perez@example.com",
     password: "1234",
     photo: "https://randomuser.me/api/portraits/men/15.jpg",
+    role: "user",
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ let users = [
     email: "maria.lopez@example.com",
     password: "1234",
     photo: "https://randomuser.me/api/portraits/women/12.jpg",
+    role: "user",
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ let users = [
     email: "carlos.garcia@example.com",
     password: "1234",
     photo: "https://randomuser.me/api/portraits/men/10.jpg",
+    role: "admin",
   },
 ];
 
