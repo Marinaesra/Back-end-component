@@ -1,12 +1,11 @@
 const jwt = require("jsonwebtoken");
 
-
 const verifyToken = (req, res, next) => {
   const token = req.header("auth-token");
   if (!token) return res.status(401).send("Acceso denegado");
   try {
     const payload = jwt.verify(token, process.env.SECRET_TOKEN);
-    req.payload = payload; 
+    req.payload = payload;
     next();
   } catch (error) {
     try {
@@ -46,5 +45,4 @@ const getTokens = async (req, res) => {
   }
 };
 
-
-module.exports = { verifyToken, verifyAdmin, getTokens, };
+module.exports = { verifyToken, verifyAdmin, getTokens };

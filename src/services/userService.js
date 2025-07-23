@@ -43,43 +43,43 @@ exports.doLogin = async (username, password) => {
 };
 
 exports.createUserInfo = async (newUser) => {
-    const userAux = {
-        id: Math.random().toFixed(5) * 10000,
-        ...newUser
-    }
+  const userAux = {
+    id: Math.random().toFixed(5) * 10000,
+    ...newUser,
+  };
 
-    users.push({
-        ...userAux
-    })
+  users.push({
+    ...userAux,
+  });
 
-    return userAux
-}
+  return userAux;
+};
 
 exports.addProductToCart = async (userId, productId) => {
-  const userAux = users.find(u => u.id == userId)
+  const userAux = users.find((u) => u.id == userId);
 
   if (userAux.cart) {
     userAux.cart.push({
-      productId
-    })
+      productId,
+    });
   } else {
     userAux.cart = [
       {
-        productId
-      }
-    ]
+        productId,
+      },
+    ];
   }
 
-  const userListAux = users.filter(u => u.id != userId)
-  userListAux.push(userAux)
+  const userListAux = users.filter((u) => u.id != userId);
+  userListAux.push(userAux);
 
-  users = userListAux
+  users = userListAux;
 
-  return userAux
-}
+  return userAux;
+};
 
-exports.modifyUser = async(editedUser) => {
-  const userAux = users.filter((u) => u.id != editedUser.id)
-  userAux.push(editedUser)
-  users = userAux
-}
+exports.modifyUser = async (editedUser) => {
+  const userAux = users.filter((u) => u.id != editedUser.id);
+  userAux.push(editedUser);
+  users = userAux;
+};

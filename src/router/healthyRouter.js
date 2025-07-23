@@ -1,10 +1,8 @@
-const express = require('express')
-const { healthyCheck } = require('../controllers/healthyControllers')
+const express = require("express");
+const { healthyCheck } = require("../controllers/healthyControllers");
 
+const router = express.Router();
 
-const router = express.Router()
+router.get("/", healthyCheck);
 
-
-router.get('/', healthyCheck)
-
-module.exports = router
+module.exports = router;
