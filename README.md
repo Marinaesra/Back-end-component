@@ -9,6 +9,7 @@ Es un proyecto creado desde el corazón con todo nuestro cariño,esperamos que o
 
 - Hemos usado para este proyecto las siguientes tencologias: React- Router, React-Redux para nuestra parte del front,
 en la parte del back hemos usado MongoDB y node.js.
+Primero tenemos que hacer un npm install ya que lo entregamos sin node_modules, por lo que ocupa a la hora de comprimir
 
 - Para ver este pequeño proyecto, teneis que instalar:
  -Front:
@@ -23,7 +24,20 @@ en la parte del back hemos usado MongoDB y node.js.
     "dotenv": "^17.1.0",
     "express": "^5.1.0",
     "mongoose": "^8.16.2",
-    "nodemon": "^3.1.10".
+    "nodemon": "^3.1.10",
+     "bcrypt": "^6.0.0",
+    "jsonwebtoken": "^9.0.2"
+
+-EndPoints User:
+GET/:id - Para traer todos los usuarios de la base de datos al front
+POST/ - Para hacer el logeo del usuario
+POST/register - Para crear un nuevo usuario
+PUT/addProduct - Para añadir productos al carrito del usuario
+POST/modify/:id - Para modificar la informacion del perfil del usuario
+
+-EndPoints Products:
+GET/products - Para traer todos los productos de la base de datos al front
+GET/details/:id - Para ver los detalles de los productos
 
 - Version: 2025
 - Autora: Marina Escaño Rando
