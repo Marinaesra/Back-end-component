@@ -6,13 +6,14 @@ const {
   addProductUserController,
   modifyUserController,
 } = require("../controllers/userController");
+const { verifyToken, verifyAdmin } = require("../middlewares/auth");
 
 const router = express.Router();
 
 router.get("/:id", getUserController);
-router.post("/", loginUserController);
-router.post("/register", createUserController);
-router.put("/addProduct", addProductUserController);
-router.post("/modify/:id", modifyUserController);
+router.post("/", loginUserController, verifyToken, verifyAdmin);
+router.post("/register", createUserController, verifyToken, verifyAdmin);
+router.put("/addProduct", addProductUserController, verifyToken, verifyToken);
+router.post("/modify/:id", modifyUserController,verifyToken);
 
 module.exports = router;
