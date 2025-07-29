@@ -28,6 +28,8 @@ Primero tenemos que hacer un npm install ya que lo entregamos sin node_modules, 
      "bcrypt": "^6.0.0",
     "jsonwebtoken": "^9.0.2"
 
+- Adjuntamos un Esquema del proyecto como imagen png, tanto en la carpeta del back como en la del front
+
 -EndPoints User:
 GET/:id - Para traer todos los usuarios de la base de datos al front
 POST/ - Para hacer el logeo del usuario
