@@ -85,3 +85,8 @@ exports.modifyUser = async (editedUser) => {
   console.log(editedUser)
   return editedUser;
 };
+
+exports.deleteUser = async (userId) => {
+  const userAux = users.filter((u) => u.id != userId);
+  users = userAux;
+};

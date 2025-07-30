@@ -4,6 +4,7 @@ const {
   createUserInfo,
   addProductToCart,
   modifyUser,
+  deleteUser,
 } = require("../services/userService");
 
 exports.getUserController = async (req, res) => {
@@ -48,4 +49,12 @@ exports.modifyUserController = async (req, res) => {
   const editedUser = req.body.user;
   const resUserInfo = await modifyUser(editedUser);
   res.status(200).send({ user: resUserInfo });
+};
+
+exports.deleteUserController = async (req, res) => {
+  const userDelete = req.params.id;
+
+  const resUserInfo = await deleteUser(userDelete);
+
+  res.status(200).send({ donut: resUserInfo });
 };
