@@ -16,6 +16,6 @@ router.post("/", loginUserController, verifyToken, verifyAdmin);
 router.post("/register", createUserController, verifyToken, verifyAdmin);
 router.put("/addProduct", addProductUserController, verifyToken, verifyToken);
 router.post("/modify/:id", modifyUserController,verifyToken);
-router.delete("delete/:id", deleteUserController, verifyToken)
+router.delete("/delete/:id", deleteUserController, verifyToken)
 
 module.exports = router;
