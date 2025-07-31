@@ -39,6 +39,7 @@ POST/ - Para hacer el logeo del usuario
 POST/register - Para crear un nuevo usuario
 PUT/addProduct - Para añadir productos al carrito del usuario
 POST/modify/:id - Para modificar la informacion del perfil del usuario
+DELETE/delete/:id - Para eliminar el usuario
 
 -EndPoints Products:
 GET/products - Para traer todos los productos de la base de datos al front
