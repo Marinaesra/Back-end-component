@@ -1,6 +1,7 @@
-//const userModel = require("../models/userModels");
-//const bcrypt = require("bcrypt");
-//const generateToken = require("../utils/authToken")
+const userModel = require("../models/userModels");
+const bcrypt = require("bcrypt");
+const generateToken = require("../utils/authToken")
+
 const {
   getUserInfo,
   doLogin,
@@ -20,8 +21,8 @@ exports.getUserController = async (req, res) => {
   res.status(200).send({ user: resUserInfo });
 };
 
-/*
-exports.getUserController = async (req, res) => {
+
+exports.loginUserController = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await userModel
@@ -48,73 +49,28 @@ exports.getUserController = async (req, res) => {
 
     res
       .status(200)
-      .send({ status: "Success", data: user, token: token, token_refresh });
+      .send({ status: "Success", data: user, token, token_refresh });
   } catch (error) {
     res.status(500).send({ status: "Failed", error: error.message });
   }
 };
-*/
-
-exports.loginUserController = async (req, res) => {
-  try {
-    const username = req.body.username;
-    const password = req.body.password;
-
-    const resUserInfo = await doLogin(username, password);
-    if (!resUserInfo) throw new Error("No existe el usuario");
-    res.status(200).send({ user: resUserInfo });
-  } catch (error) {
-    res.sendStatus(500);
-  }
-};
-/*
-exports.loginUserController = async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
-    const newUser = {
-      name,
-      email,
-      password: await bcrypt.hash(password, 10),
-    };
-    await userModel.create(newUser);
-
-    const to = email;
-    const subject = "Bienvenido a nuestra App";
-    const html = `<h3> Hola ${name} gracias por registrarte en nuestra aplicación </h3>
-                  <p> Si tienes cualquier duda contacta con nosotros </p>
-                  `;
-
-    await sendEmail(to, subject, html);
-
-    res.status(200).send("El usuario se ha creado correctamente");
-  } catch (error) {
-    res.status(500).send({ status: "Failed", error: error.message });
-  }
-};
-*/
 
 exports.createUserController = async (req, res) => {
-  const newUser = req.body.newUser;
-
-  const resUserInfo = await createUserInfo(newUser);
-
-  res.status(200).send({ user: resUserInfo });
-};
-
-/*exports.createUserController = async (req, res) => {
-  const isUserUser =
-    (await userModel.findById(req.payload._id)).role === "user";
-  if (!isAdminUser) {
-    throw new Error("El adminitrador no tiene permisos de usuario");
-  }
   try {
-    const newUser = req.body;
+    const {name, username, email, password, photo} = req.body;
+    const newUser = {
+      name, 
+      username, 
+      email, 
+      password: await bcrypt.hash(password,10), 
+      photo
+    }
     await userModel.create(newUser);
-    res.status(200).send("El usuario se creo correctamente");
+    res.status(200).send({ status: "Success", message:"El usuario se creo correctamente", newUser});
   } catch (error) {
     res.status(500).send({ status: "Failed", error: error.message });
   }
-};*/
+};
 
 exports.addProductUserController = async (req, res) => {
   const userId = req.body.userId;
@@ -132,13 +88,9 @@ exports.modifyUserController = async (req, res) => {
 };
 /*
 exports.modifyUserController = async (req, res) => {
-  const isUserUser =
-    (await userModel.findById(req.payload._id)).role === "user";
-  if (!isAdminUser) {
-    throw new Error("El administrador no tiene permisos de usuario");
-  }
+
   try {
-    const idUser = req.params.idUser;
+    const idUser = req.params.idUser; // Mejorar sacarlo del payload(token)
     const newUser = req.body;
     const modifyUser = await userModel.findByIdAndUpdate(
       idUser,
@@ -167,17 +119,12 @@ exports.deleteUserController = async (req, res) => {
 };
 /*
 exports.deleteUserController = async (req, res) => {
- const isUserUser =
-    (await userModel.findById(req.payload._id)).role === "user";
-  if (!isAdminUser) {
-    throw new Error("El administrador no tiene permisos de usuario");
-  }
   try {
-    const idUser = req.params.idUser;
+    const idUser = req.params.idUser; // Mejorar sacarlo del payload(token)
     await userModel.findByIdAndDelete(idUser);
     res
       .status(200)
-      .send({ status: "Sucess", data: "El usuario se elimino correctamente" });
+      .send({ status: "Success", message: "El usuario se elimino correctamente" });
   } catch (error) {
     res.status(500).send({ status: "Failed", error: error.message });
   }
