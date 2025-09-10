@@ -15,7 +15,7 @@ router.get("/:id", getUserController);
 router.post("/", loginUserController);
 router.post("/register", createUserController);
 router.put("/addProduct", addProductUserController, verifyToken, verifyToken);
-router.post("/modify/:id", modifyUserController);
+router.patch("/modify/:id", modifyUserController);
 router.delete("/delete/:id", deleteUserController, verifyToken)
 
 module.exports = router;

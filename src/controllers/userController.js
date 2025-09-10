@@ -24,8 +24,7 @@ exports.loginUserController = async (req, res) => {
     const { email, password } = req.body;
     const user = await userModel
       .findOne({ email: email })
-      .select("name email password role");
-
+      .select("name email password role photo");
     if (!user) {
       return res.status(404).send("Usuario o contraseña no validos");
     }
@@ -46,7 +45,7 @@ exports.loginUserController = async (req, res) => {
 
     res
       .status(200)
-      .send({ status: "Success", data: user, token, token_refresh });
+      .send({ status: "Success", user: user, token, token_refresh });
   } catch (error) {
     res.status(500).send({ status: "Failed", error: error.message });
   }
@@ -91,27 +90,27 @@ exports.modifyUserController = async (req, res) => {
   try {
     const idUser = req.params.id;
     const newUser = req.body;
+    console.log(newUser)
     const modifyUser = await userModel.findByIdAndUpdate(
       idUser,
       newUser,
       {
         new: true,
-        runValidators: true
       });
-      
+      console.log(modifyUser)
    const payload = {
-      id: modifyUser._id,
+      _id: modifyUser._id,
       name: modifyUser.name,
       role: modifyUser.role,
     };
 
-    const token = generateToken(payload, false);
-    const token_refresh = generateToken(payload, true);
+    /*const token = generateToken(payload, false);
+    const token_refresh = generateToken(payload, true);*/
 
     if (!modifyUser) {
       return res.status(200).send("No hay usuario");
     }
-    res.status(200).send({ status: "Success", data: modifyUser });
+    res.status(200).send({ status: "Success", user: modifyUser });
   } catch (error) {
     res.status(500).send({ status: "Failed", error: error.message });
   }
