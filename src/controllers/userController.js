@@ -60,15 +60,28 @@ exports.createUserController = async (req, res) => {
       email,
       password: await bcrypt.hash(password, 10),
     };
-    console.log(newUser)
+   
     
     await userModel.create(newUser);
+
+
+    const payload = {
+      id: user.id,
+      name: user.name,
+      role: user.role,
+    };
+
+    const token = generateToken(payload, false);
+    const token_refresh = generateToken(payload, true);
+
+
     res
       .status(200)
       .send({
         status: "Success",
         message: "El usuario se creo correctamente",
         newUser,
+        token, token_refresh 
       });
   } catch (error) {
     res.status(500).send({ status: "Failed", error: error.message });
@@ -104,15 +117,15 @@ exports.modifyUserController = async (req, res) => {
       role: modifyUser.role,
     };
 
-    /*const token = generateToken(payload, false);
-    const token_refresh = generateToken(payload, true);*/
+    const token = generateToken(payload, false);
+    const token_refresh = generateToken(payload, true);
 
     if (!modifyUser) {
       return res.status(200).send("No hay usuario");
     }
     res.status(200).send({ status: "Success", user: modifyUser });
   } catch (error) {
-    res.status(500).send({ status: "Failed", error: error.message });
+    res.status(500).send({ status: "Failed", error: error.message, token, token_refresh  });
   }
 };
 
