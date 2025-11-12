@@ -4,6 +4,7 @@ Buenas Familia
 
 - Aqui os presentamos nuestro pequeño gran sueño
 Es un proyecto creado desde el corazón con todo nuestro cariño,esperamos que os guste tanto como a nosotros, que percibais el cariño con el que lo hemos creado y que seais participes de nuestro sueño.
+En principio es una pagina con informacion sobre suplementos para el deporte, en el cual la idea es crecer y que termine siendo una tienda en la cual se pueda obtener esos productos
 
 -Esencia Activa se basa en lo esencial, lo puro y lo vital.
 
@@ -30,14 +31,13 @@ Primero tenemos que hacer un npm install ya que lo entregamos sin node_modules, 
 
 - Adjuntamos un Esquema proyecto como imagen png, tanto en la carpeta del back como en la del front
 
-- En el crud a la hora de modificar el usuario tanto el creado como el de la base da datos, se cambia de uno en uno los campos.
-Para modificar la foto se cambia por URL, para hacer la prueba puedes coger una del userService y comprobarlo.
+- Tiene la pagina inicial, en la cual puedes entrar a verla sin estar registrado, la pagina de contacto y la pagina del listado, que es lo que se solicita.
+Despues encontramos una pagina donde podemos modificar el perfil del usuario, y una donde ver los detalles del producto, y la ultima que es con proyecciones a futuro que se cree el carrito y con este una pasarela de pago.
 
 -EndPoints User:
 GET/:id - Para traer todos los usuarios de la base de datos al front
 POST/ - Para hacer el logeo del usuario
 POST/register - Para crear un nuevo usuario
-PUT/addProduct - Para añadir productos al carrito del usuario
 POST/modify/:id - Para modificar la informacion del perfil del usuario
 DELETE/delete/:id - Para eliminar el usuario
 
