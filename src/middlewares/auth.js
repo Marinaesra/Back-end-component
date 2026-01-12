@@ -18,6 +18,7 @@ const verifyToken = (req, res, next) => {
   }
 };
 
+
 const verifyAdmin = (req, res, next) => {
   try {
     const role = req.payload.role;
@@ -45,4 +46,5 @@ const getTokens = async (req, res) => {
   }
 };
 
-module.exports = { verifyToken, verifyAdmin, getTokens };
+
+module.exports = { verifyToken, verifyAdmin, getTokens, verifyValidToken };
