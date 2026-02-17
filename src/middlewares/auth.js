@@ -47,4 +47,4 @@ const getTokens = async (req, res) => {
 };
 
 
-module.exports = { verifyToken, verifyAdmin, getTokens, verifyValidToken };
+module.exports = { verifyToken, verifyAdmin, getTokens };
