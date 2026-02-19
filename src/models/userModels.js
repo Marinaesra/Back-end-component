@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
- 
+
 const userSchema = new Schema({
   name: {
     type: String,
     required: [true, "El nombre es obligatorio"],
     minlength: [2, "El nombre debe de tener al menos 2 caracteres"],
-    maxlength: 30
+    maxlength: 30,
   },
   userName: {
     type: String,
@@ -16,7 +16,7 @@ const userSchema = new Schema({
     type: String,
     required: [true, "El email es obligatorio"],
     unique: [true, "El correo ya existe"],
-    trim: true
+    trim: true,
   },
   password: {
     type: String,
@@ -30,10 +30,8 @@ const userSchema = new Schema({
   photo: {
     type: String,
   },
-
 });
 
-
 const userModel = mongoose.model("User", userSchema, "user");
- 
+
 module.exports = userModel;

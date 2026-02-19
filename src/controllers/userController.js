@@ -52,7 +52,6 @@ exports.loginUserController = async (req, res) => {
 };
 
 exports.createUserController = async (req, res) => {
-
   try {
     const { name, email, password } = req.body;
     const newUser = {
@@ -60,10 +59,8 @@ exports.createUserController = async (req, res) => {
       email,
       password: await bcrypt.hash(password, 10),
     };
-   
-    
-    await userModel.create(newUser);
 
+    await userModel.create(newUser);
 
     const payload = {
       id: user.id,
@@ -74,15 +71,13 @@ exports.createUserController = async (req, res) => {
     const token = generateToken(payload, false);
     const token_refresh = generateToken(payload, true);
 
-
-    res
-      .status(200)
-      .send({
-        status: "Success",
-        message: "El usuario se creo correctamente",
-        newUser,
-        token, token_refresh 
-      });
+    res.status(200).send({
+      status: "Success",
+      message: "El usuario se creo correctamente",
+      newUser,
+      token,
+      token_refresh,
+    });
   } catch (error) {
     res.status(500).send({ status: "Failed", error: error.message });
   }
@@ -97,21 +92,16 @@ exports.addProductUserController = async (req, res) => {
   res.status(200).send({ user: resUserInfo });
 };
 
-
 exports.modifyUserController = async (req, res) => {
-
   try {
     const idUser = req.params.id;
     const newUser = req.body;
-    console.log(newUser)
-    const modifyUser = await userModel.findByIdAndUpdate(
-      idUser,
-      newUser,
-      {
-        new: true,
-      });
-      console.log(modifyUser)
-   const payload = {
+    console.log(newUser);
+    const modifyUser = await userModel.findByIdAndUpdate(idUser, newUser, {
+      new: true,
+    });
+    console.log(modifyUser);
+    const payload = {
       _id: modifyUser._id,
       name: modifyUser.name,
       role: modifyUser.role,
@@ -125,22 +115,24 @@ exports.modifyUserController = async (req, res) => {
     }
     res.status(200).send({ status: "Success", user: modifyUser });
   } catch (error) {
-    res.status(500).send({ status: "Failed", error: error.message, token, token_refresh  });
+    res
+      .status(500)
+      .send({ status: "Failed", error: error.message, token, token_refresh });
   }
 };
 
-
-
 exports.deleteUserController = async (req, res) => {
   try {
-    const idUser = req.params.id; 
-        await userModel.findByIdAndDelete(idUser);
+    const idUser = req.params.id;
+    await userModel.findByIdAndDelete(idUser);
 
     res
       .status(200)
-      .send({ status: "Success", message: "El usuario se elimino correctamente" });
+      .send({
+        status: "Success",
+        message: "El usuario se elimino correctamente",
+      });
   } catch (error) {
     res.status(500).send({ status: "Failed", error: error.message });
   }
 };
-

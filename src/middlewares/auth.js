@@ -18,7 +18,6 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-
 const verifyAdmin = (req, res, next) => {
   try {
     const role = req.payload.role;
@@ -45,6 +44,5 @@ const getTokens = async (req, res) => {
     res.status(500).send({ status: "Failed", error: error.message });
   }
 };
-
 
 module.exports = { verifyToken, verifyAdmin, getTokens };

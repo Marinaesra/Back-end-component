@@ -36,7 +36,7 @@ exports.getUserInfo = async (userId) => {
 
 exports.doLogin = async (username, password) => {
   const userAux = users.find(
-    (u) => u.username == username && u.password == password
+    (u) => u.username == username && u.password == password,
   );
 
   return userAux;
@@ -82,7 +82,7 @@ exports.modifyUser = async (editedUser) => {
   const userAux = users.filter((u) => u.id != editedUser.id);
   userAux.push(editedUser);
   users = userAux;
-  console.log(editedUser)
+  console.log(editedUser);
   return editedUser;
 };
 
